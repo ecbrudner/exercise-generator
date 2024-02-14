@@ -1,5 +1,17 @@
-const express = require ('express');
+const express = require('express');
+const sequelize = require('./config/connection');
+const path = require('path');
+
 const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
+
 
 const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=10';
 const options = {
