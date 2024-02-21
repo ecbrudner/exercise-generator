@@ -1,10 +1,8 @@
-const path = require('path');
+// const path = require('path');
 const router = require('express').Router();
 
 
-const urlUnfiltered = 'https://exercisedb.p.rapidapi.com/exercises?limit=10';
-const urlEquipment =  'https://exercisedb.p.rapidapi.com/exercises/equipmentList?limit=10';
-const urlBodyPart =  'https://exercisedb.p.rapidapi.com/exercises/bodyPartList?limit=10';
+const unfilteredResults = 'https://exercisedb.p.rapidapi.com/exercises?limit=10';
 const options = {
 	method: 'GET',
 	headers: {
@@ -13,44 +11,38 @@ const options = {
 	}
 };
 
-async function apiCallUnfiltered(){
+ async function apiCallUnfiltered() {
   try {
-    const response = await fetch(urlUnfiltered, options);
-    const result = await response.text();
-    console.log(result);
+      const response = await fetch(unfilteredResults, options);
+      const result = await response.json(); // Parse response directly as JSON
+
+      // Get a random index within the range of the exercises
+      const randomIndex = Math.floor(Math.random() * result.length);
+
+      // Access the exercise data at the random index
+      const randomExercise = result[randomIndex];
+
+      // Extract exercise details
+      const bodyPart = randomExercise.bodyPart;
+      const equipment = randomExercise.equipment;
+      const instructions = randomExercise.instructions;
+      const name = randomExercise.name;
+      const gif = randomExercise.gifUrl;
+
+      console.log("Name :", name);
+      console.log("Body Part: ", bodyPart);
+      console.log("Equipment: ", equipment);
+      console.log("Instructions: ", instructions);
+      console.log("GIF: ", gif);
   } catch (error) {
-    console.error(error);
-  };
-  }
-
-  async function apiCallEquipment(){
-    try {
-      const response = await fetch(urlEquipment, options);
-      const result = await response.text();
-      console.log(result);
-    } catch (error) {
       console.error(error);
-    };
-    }
+  };
+}
 
-    async function apiCallBodyPart(){
-      try {
-        const response = await fetch(urlBodyPart, options);
-        const result = await response.text();
-        console.log(result);
-      } catch (error) {
-        console.error(error);
-      };
-      }
-
-
-
-router.get('/', (req, res) =>
-console.log("Test")
-);
+// router.get('/', (req, res) =>
+// res.sendFile(path.join(__dirname, 'input file path'))
+// );
 
 apiCallUnfiltered()
-apiCallEquipment()
-apiCallBodyPart()
 
 module.exports=router
