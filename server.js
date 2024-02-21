@@ -14,8 +14,6 @@ const Exercise = require('./models/Exercise');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({});
-
 const sess = {
   secret: 'Super secret',
   cookie: {
@@ -43,5 +41,5 @@ app.use(express.static('public'));
 app.use('/', homeRoutes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`));
 });
