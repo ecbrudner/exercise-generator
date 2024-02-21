@@ -2,7 +2,9 @@ const path = require('path');
 const router = require('express').Router();
 
 
-const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=10';
+const urlUnfiltered = 'https://exercisedb.p.rapidapi.com/exercises?limit=10';
+const urlEquipment =  'https://exercisedb.p.rapidapi.com/exercises/equipmentList?limit=10';
+const urlBodyPart =  'https://exercisedb.p.rapidapi.com/exercises/bodyPartList?limit=10';
 const options = {
 	method: 'GET',
 	headers: {
@@ -11,9 +13,9 @@ const options = {
 	}
 };
 
-async function apiCall(){
+async function apiCallUnfiltered(){
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(urlUnfiltered, options);
     const result = await response.text();
     console.log(result);
   } catch (error) {
@@ -21,12 +23,34 @@ async function apiCall(){
   };
   }
 
+  async function apiCallEquipment(){
+    try {
+      const response = await fetch(urlEquipment, options);
+      const result = await response.text();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    };
+    }
+
+    async function apiCallBodyPart(){
+      try {
+        const response = await fetch(urlBodyPart, options);
+        const result = await response.text();
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      };
+      }
+
 
 
 router.get('/', (req, res) =>
 console.log("Test")
 );
 
-apiCall()
+apiCallUnfiltered()
+apiCallEquipment()
+apiCallBodyPart()
 
 module.exports=router
