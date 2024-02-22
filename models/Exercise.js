@@ -1,7 +1,9 @@
-const {DataTypes} = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
-const Exercise = sequelize.define('Exercise', {
+class Exercise extends Model {}
+Exercise.init(
+{
     //enter columns for each exercise
     id: {
         type: DataTypes.INTEGER,
@@ -24,6 +26,13 @@ const Exercise = sequelize.define('Exercise', {
     instructions: {
         type: DataTypes.STRING,
     },
+},
+{
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'exercise',
 });
 
 module.exports = Exercise;
