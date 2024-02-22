@@ -24,7 +24,7 @@ Exercise.init(
         type: DataTypes.STRING,
     },
     instructions: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(500),
     },
 },
 {
