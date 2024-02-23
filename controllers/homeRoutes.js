@@ -1,7 +1,6 @@
 // const path = require('path');
 const router = require('express').Router();
 
-
 const unfilteredResults = 'https://exercisedb.p.rapidapi.com/exercises?limit=10';
 const options = {
 	method: 'GET',
@@ -43,6 +42,16 @@ const options = {
 // res.sendFile(path.join(__dirname, 'input file path'))
 // );
 
+router.get('/login', (req, res) => {
+    // If the user is already logged in, redirect to the homepage
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    // Otherwise, render the 'login' template
+    res.render('login');
+  });
+
 apiCallUnfiltered()
 
-module.exports=router
+module.exports=router;
