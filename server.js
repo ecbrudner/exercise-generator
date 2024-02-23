@@ -3,6 +3,8 @@ const Sequelize = require("sequelize");
 const path = require('path');
 const session = require('express-session');
 const homeRoutes= require('./routes/homeRoutes.js');
+const apiRoutes = require('./routes/apiRoutes.js');
+const authRoutes = require('./routes/auth.js');
 const exphbs = require('express-handlebars');
 
 const sequelize = require('./config/connection');
@@ -31,7 +33,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine('handlebars', hbs.engine);
+app.engine('handlebars', exphbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
@@ -39,6 +41,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use('/', homeRoutes);
+app.use('/api', apiRoutes);
+app.use('/auth', authRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`));
