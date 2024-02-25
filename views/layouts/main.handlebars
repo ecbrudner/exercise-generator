@@ -7,16 +7,16 @@
   <title>Website Title</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link href="./public/css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-slate-500">
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         Your fitness journey starts here
-        <button class="no-button" id="home">Lets Get started</button>
       </h1>
-      <nav>
+      <nav class= "bg-red-700 text-white">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> |
