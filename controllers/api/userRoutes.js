@@ -1,6 +1,6 @@
 //user authorization routes
 const router = require('express').Router();
-const { User } = require('../models/index.js');
+const { User } = require('../../models/index.js');
 
 //create new user
 router.post('/register', async (req, res) => {
