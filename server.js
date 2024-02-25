@@ -7,6 +7,7 @@ const homeRoutes= require('./controllers/homeRoutes.js');
 // const authRoutes = require('./routes/auth.js');
 const userRoutes = require('./controllers/api/userRoutes.js')
 const exphbs = require('express-handlebars');
+const helpers = require('./utils/utils');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -16,6 +17,8 @@ const Exercise = require('./models/Exercise');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: 'Super secret',
@@ -34,7 +37,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine('handlebars', exphbs.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
@@ -46,6 +49,11 @@ app.use('/', homeRoutes);
 // app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 // app.use('/user', User);
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`));
