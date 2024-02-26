@@ -42,7 +42,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRoutes);
 // app.use('/api', apiRoutes);
@@ -56,5 +56,9 @@ app.use((err, req, res, next) => {
 });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`));
-});
+  console.log('Database synced successfully');
+  app.listen(PORT, () => console.log('Now listening'));
+})
+  .catch((err) => {
+    console.error('Error syncing database:', err);
+  });
