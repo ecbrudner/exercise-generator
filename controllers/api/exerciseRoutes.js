@@ -1,16 +1,18 @@
 const router = require('express').Router();
-const fs = require('fs');
-const {Exercise} = require('../models/index.js')
+const { Exercise } = require('../../models');
 
-
-router.post('/savedExercise', async (req, res) => {
-    try{
-        const savedExercise = Exercise.create(req.body);
-        res.json(savedExercise);
-    }
-    catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+router.post('/save', async (req, res) => {
+    try {
+        const { bodyPart, equipment, gifUrl, name } = req.body;
+        const dbExerciseData = await Exercise.create({ bodyPart, 
+            equipment, 
+            gifUrl, 
+            name});
+        
+        res.status(200).json(dbExerciseData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(error);
     }
 });
 

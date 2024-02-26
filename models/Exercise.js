@@ -26,6 +26,13 @@ Exercise.init(
     instructions: {
         type: DataTypes.STRING(500),
     },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id',
+        },
+    },
 },
 {
     sequelize,
