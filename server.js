@@ -6,6 +6,7 @@ const homeRoutes= require('./controllers/homeRoutes.js');
 // const apiRoutes = require('./controllers/api/');
 // const authRoutes = require('./routes/auth.js');
 const userRoutes = require('./controllers/api/userRoutes.js')
+const exerciseRoutes = require('./controllers/api/exerciseRoutes.js');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/utils');
 
@@ -49,6 +50,7 @@ app.use('/', homeRoutes);
 // app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 // app.use('/user', User);
+app.use('/exercise', exerciseRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
