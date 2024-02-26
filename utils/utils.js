@@ -35,4 +35,4 @@ const options = {
   };
 }
 
-apiCallUnfiltered()
+module.exports = {apiCallUnfiltered};
