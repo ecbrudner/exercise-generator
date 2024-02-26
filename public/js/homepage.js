@@ -1,3 +1,5 @@
-const utils= require('./utils.js');
+import { apiCallUnfiltered } from '../../utils/utils.js';
+const generatorButton = document.getElementById('generator');
 
-// this is where the functionality for the buttons on the homepage will go
+
+generatorButton.addEventListener('click', apiCallUnfiltered);
