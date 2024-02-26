@@ -18,21 +18,16 @@ const options = {
       // Access the exercise data at the random index
       const randomExercise = result[randomIndex];
 
-      // Extract exercise details
-      const bodyPart = randomExercise.bodyPart;
-      const equipment = randomExercise.equipment;
-      const instructions = randomExercise.instructions;
-      const name = randomExercise.name;
-      const gif = randomExercise.gifUrl;
-
-      console.log("Name :", name);
-      console.log("Body Part: ", bodyPart);
-      console.log("Equipment: ", equipment);
-      console.log("Instructions: ", instructions);
-      console.log("GIF: ", gif);
-  } catch (error) {
-      console.error(error);
-  };
-}
+     return {
+        bodyPart: randomExercise.bodyPart,
+        equipment: randomExercise.equipment,
+        gifUrl: randomExercise.gifUrl,
+        name: randomExercise.name,
+        instructions: randomExercise.instructions,
+      };
+    } catch (error) {
+    console.error(error);
+    }
+ }
 
 module.exports = {apiCallUnfiltered};

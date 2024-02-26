@@ -1,19 +1,12 @@
-{{!-- <div class="row text-white">
-  <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
-  </div>
-</div>
+<h2>{{user.username}}'s Profile</h2>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Your Information:</h3>
-    <h3>Gender: {{gender}}</h3>
-    <h3>Age: {{age}}</h3>
-    <h3>Height: {{height}}</h3>
-    <h3>Weight: {{weight}}</h3>
-    <h3>Target Weight: {{targetWeight}}</h3>
-    <h3>Time as member: {{monthsAsMember}}</h3>
-  </div>
-</div>
+<h3>Saved Exercises:</h3>
+<ul>
+  {{#each user.Exercises}}
+    <li>
+      <p>Exercise: {{name}}</p>
+      <p>Targeted Area: {{bodyPart}}</p>
+      <p>Needed equipment: {{equipment}}</p>
+      <p>How it's done: {{gifUrl}}</p>
 
-<script src="./js/User.js"></script> --}}
+<script type="text/javascript" src="./js/homepage.js"></script>

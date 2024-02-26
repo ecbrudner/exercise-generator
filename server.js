@@ -6,6 +6,7 @@ const homeRoutes= require('./controllers/homeRoutes.js');
 // const apiRoutes = require('./controllers/api/');
 // const authRoutes = require('./routes/auth.js');
 const userRoutes = require('./controllers/api/userRoutes.js')
+const exerciseRoutes = require('./controllers/api/exerciseRoutes.js');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/utils');
 
@@ -42,13 +43,14 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRoutes);
 // app.use('/api', apiRoutes);
 // app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 // app.use('/user', User);
+app.use('/exercise', exerciseRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -56,5 +58,9 @@ app.use((err, req, res, next) => {
 });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`));
-});
+  console.log('Database synced successfully');
+  app.listen(PORT, () => console.log('Now listening'));
+})
+  .catch((err) => {
+    console.error('Error syncing database:', err);
+  });
