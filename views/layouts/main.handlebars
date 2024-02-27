@@ -17,9 +17,10 @@
       <h1>
         Your fitness journey starts here
       </h1>
-      <nav class= "bg-red-700 text-white font-sans">
+      {{log loggedIn}}
+      <nav class= "bg-red-700 text-white">
         <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
+        {{#if loggedIn}}
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
@@ -37,7 +38,7 @@
   </div>
 
   <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>

@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     if (!req.session.loggedIn) {
       res.redirect('/login');
       return;
-    } else res.render('homepage');
+    } else res.render('homepage', {loggedIn:req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -29,7 +29,7 @@ router.get('/profile',auth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      loggedIn: true
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     res.status(500).json(err);

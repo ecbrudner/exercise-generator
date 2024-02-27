@@ -29,6 +29,7 @@ router.post('/login', async (req, res) => {
                 email: req.body.email,
             },
         });
+        console.log({dbUserData})
 
         if (!dbUserData) {
             res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
@@ -41,7 +42,6 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
             return;
         }
-
         req.session.save(() => {
             req.session.loggedIn = true;
             res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
