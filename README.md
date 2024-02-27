@@ -1,6 +1,6 @@
 # exercise-generator
 
-[Deployed Application Link] (https://gym-genius-2024-0a3158a7e2cf.herokuapp.com/login)
+[Deployed Application Link](https://gym-genius-2024-0a3158a7e2cf.herokuapp.com/login)
 ![gym-genius-2024-0a3158a7e2cf herokuapp com_](https://github.com/ecbrudner/lyric-decoder/assets/148579054/08ca545f-be6a-4f1f-8c8e-810a82d44271)
 
 ## Description
