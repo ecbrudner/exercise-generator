@@ -25,6 +25,7 @@ The page will display the name of the exercise, the body part used, equipment ne
 
 ## Credits
 
+Claire Brudner: https://github.com/ecbrudner
 Richard Castaldy: https://github.com/RLCastaldy
 Isaiah Gonzalez: https://github.com/Beezershons
 
