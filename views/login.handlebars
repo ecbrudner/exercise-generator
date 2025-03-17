@@ -1,37 +1,35 @@
-<h2 class="text-black font-bold font-sans">Login</h2>
+<div class="max-w-md mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+  <h2 class="text-2xl font-semibold text-[var(--primary-green)] text-center">Login</h2>
 
-<form class="form login-form text-black font-sans">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
+  <form class="mt-4 space-y-4">
+    <div>
+      <label for="email-login" class="block text-gray-700 font-medium">Email:</label>
+      <input class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--secondary-green)]" type="text" id="email-login" />
+    </div>
+    <div>
+      <label for="password-login" class="block text-gray-700 font-medium">Password:</label>
+      <input class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--secondary-green)]" type="password" id="password-login" />
+    </div>
+    <button class="w-full bg-[var(--primary-green)] text-white py-3 rounded-md font-semibold hover:bg-green-700">Login</button>
+  </form>
 
-<h2 class="text-black font-bold text-black font-sans">Sign Up</h2>
+  <h2 class="text-xl font-semibold text-[var(--primary-green)] text-center mt-6">Sign Up</h2>
 
-<form class="form signup-form font-sans">
-  <div class="form-group">
-    <label for="username-signup">username:</label>
-    <input class="form-input" type="text" id="username-signup" />
-  </div>
-  <div class="form-group">
-    <label for="email-signup">email:</label>
-    <input class="form-input" type="text" id="email-signup" />
-  </div>
-  <div class="form-group">
-    <label for="password-signup">password:</label>
-    <input class="form-input" type="password" id="password-signup" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">signup</button>
-  </div>
-</form>
+  <form class="mt-4 space-y-4">
+    <div>
+      <label for="username-signup" class="block text-gray-700 font-medium">Username:</label>
+      <input class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--secondary-green)]" type="text" id="username-signup" />
+    </div>
+    <div>
+      <label for="email-signup" class="block text-gray-700 font-medium">Email:</label>
+      <input class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--secondary-green)]" type="text" id="email-signup" />
+    </div>
+    <div>
+      <label for="password-signup" class="block text-gray-700 font-medium">Password:</label>
+      <input class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--secondary-green)]" type="password" id="password-signup" />
+    </div>
+    <button class="w-full bg-[var(--primary-green)] text-white py-3 rounded-md font-semibold hover:bg-green-700">Sign Up</button>
+  </form>
+</div>
 
 <script type="text/javascript" src="./js/login.js"></script>
