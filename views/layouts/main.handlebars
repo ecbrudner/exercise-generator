@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title class="font-sans Graphik">Gym Genius</title>
-  {{!-- <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link href="./public/css/styles.css" rel="stylesheet"> --}}
+  <title>Gym Genius</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Add custom dark green theme */
+    :root {
+      --primary-green: #064e3b; /* Deep dark green */
+      --secondary-green: #10b981; /* Lighter accent green */
+    }
+  </style>
 </head>
 
-<body class="bg-slate-500 font-mono">
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        Your fitness journey starts here
-      </h1>
-      {{log loggedIn}}
-      <nav class= "bg-red-700 text-white">
-        <!-- Conditionally render login or logout links -->
+<body class="bg-gray-100 font-sans">
+  <div class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="bg-[var(--primary-green)] text-white p-4 flex justify-between items-center shadow-md">
+      <h1 class="text-2xl font-bold tracking-wide">Gym Genius</h1>
+      <nav class="space-x-4">
         {{#if loggedIn}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+          <a href="/profile" class="text-lg hover:text-gray-300">Profile</a>
+          <button class="bg-red-600 px-4 py-2 rounded-md text-white hover:bg-red-500" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+          <a href="/login" class="text-lg hover:text-gray-300">Login</a>
         {{/if}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-10 p-5">
       {{{ body }}}
     </main>
-    <footer>
-      
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4 mt-auto">
+      <p>© 2025 Gym Genius. All rights reserved.</p>
     </footer>
   </div>
 
-  <!-- Render script for logged in users only -->
   {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
+    <script src="/js/logout.js"></script>
   {{/if}}
 </body>
-
 </html>
